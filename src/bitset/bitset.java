@@ -5,27 +5,24 @@ import java.util.*;
 class bitSet {
 
     public int size;
-    public String name;`
+    public String name;
 
-    public void addition (mnoj mnojestvo1, mnoj mnojestvo2) {
-       // mnojestvo3 = mnojestvo2 + mnojestvo1;
-    }
-
-    void umnojit(mnojestvo mnojestvo1, mnojestvo mnojestvo2) {
-
-    }
-
-    bitSet(String name, int size){
+    public bitSet(String name, int size) {
 
         this.name = name;
         this.size = size;
 
     }
 
-}
+    void sum (HashMap<Integer, String> block1, HashMap<Integer, String> block2) {
 
-class mnoj {
+        Map<Integer, String> blockSum = new HashMap<Integer, String>(block1);
+        blockSum.putAll(block2);
 
-    ArrayList mnoj = new ArrayList();
+    }
+
+    void intersection (bitSet block1, bitSet block2) {
+
+    }
 
 }
