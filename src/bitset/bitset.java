@@ -4,20 +4,17 @@ import java.util.*;
 
 class bitSet {
 
-    public int size;
-    public String name;
 
-    public bitSet(String name, int size) {
+    HashMap<Integer, String> aa = new HashMap<>();
 
-        this.name = name;
-        this.size = size;
+    HashMap<Integer, String> bb = new HashMap<>();
 
-    }
 
-    void sum (HashMap<Integer, String> block1, HashMap<Integer, String> block2) {
 
-        Map<Integer, String> blockSum = new HashMap<Integer, String>(block1);
-        blockSum.putAll(block2);
+    void sum (HashMap<Integer, String> aa, HashMap<Integer, String> bb) {
+
+        Map<Integer, String> blockSum = new HashMap<Integer, String>(aa);
+        blockSum.putAll(bb);
 
     }
 
@@ -25,4 +22,28 @@ class bitSet {
 
     }
 
+}
+
+class block {
+
+    public int size;
+    public String name;
+
+    public block(String name, int size) {
+        this.name = name;
+        this.size = size;
+    }
+
+    HashMap<Integer, String> elem = new HashMap<>();
+
+    HashMap<Integer, String> createBlock (String objects) {
+
+        for (int key = 0; key < size; key++) {
+
+            elem.put(key, objects);
+        }
+
+        return elem;
+
+    }
 }
