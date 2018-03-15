@@ -12,7 +12,9 @@ public class Main {
 
         block x = new block("hoho", 5);
 
-        System.out.print(x.createBlock("a"));
+        bitSet z = new bitSet(1,2);
+
+        System.out.print(z.sum("ds", "ds"));
 
     }
 }

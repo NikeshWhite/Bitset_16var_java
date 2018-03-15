@@ -4,14 +4,64 @@ import java.util.*;
 
 class bitSet {
 
+    private int sizeA;
+    private int sizeB;
 
-    HashMap<Integer, String> aa = new HashMap<>();
+    public bitSet(int sizeA, int sizeB) {
+        this.sizeA = sizeA;
+        this.sizeB = sizeB;
+    }
 
-    HashMap<Integer, String> bb = new HashMap<>();
+    block a = new block("A", sizeA);
+    block b = new block("B", sizeB);
+
+    HashMap sum (String some1, String some2) {
+
+        a.createBlock(some1);
+        b.createBlock(some2);
+
+        HashMap<Integer, Object> result = new HashMap<>();
+
+        for (int key = 0; key < sizeA; key++) {
+
+            result.put(key, some1);
+        }
+
+        for (int key = sizeA; key < sizeB+sizeA; key++) {
+
+            result.put(key, some2);
+        }
+
+        return result;
+
+    }
+
+    HashMap intersection (String some1, String some2) {
 
 
 
-    void sum (HashMap<Integer, String> aa, HashMap<Integer, String> bb) {
+        a.createBlock(some1);
+        b.createBlock(some2);
+
+        HashMap<Integer, Object> result = new HashMap<>();
+
+        int sizeAll = sizeA + sizeB;
+
+        for (int count = 0; count > sizeAll; count ++) {
+
+
+
+        }
+
+
+
+
+
+    }
+
+
+
+    /*void sum (HashMap<Integer, String> a, HashMap<Integer, String> b) {
 
         Map<Integer, String> blockSum = new HashMap<Integer, String>(aa);
         blockSum.putAll(bb);
@@ -20,11 +70,11 @@ class bitSet {
 
     void intersection (bitSet block1, bitSet block2) {
 
-    }
+    }*/
 
 }
 
-class block {
+class block extends HashMap {
 
     public int size;
     public String name;
@@ -46,4 +96,5 @@ class block {
         return elem;
 
     }
+
 }
