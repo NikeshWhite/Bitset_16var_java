@@ -1,7 +1,7 @@
 package bitset;
 
 import java.util.*;
-
+/*
 class bitSet {
 
     private int sizeA;
@@ -15,12 +15,79 @@ class bitSet {
     block a = new block("A", sizeA);
     block b = new block("B", sizeB);
 
-    HashMap sum (String some1, String some2) {
+
+
+    HashMap sum (List<String> some1, List<String> some2) {
 
         a.createBlock(some1);
         b.createBlock(some2);
 
-        HashMap<Integer, Object> result = new HashMap<>();
+        HashMap<Integer, String> result = new HashMap<>();
+
+        for (int key = 0; key < sizeA; key++) {
+
+            result.put(key, some1.get(key));
+        }
+
+        for (int key = sizeA; key < sizeB+sizeA; key++) {
+
+            result.put(key, some2.get(key));
+        }
+
+        return result;
+
+    }
+
+   /* public static void removeTheFirstNameDuplicates(HashMap<Integer, String> map)
+    {
+        HashMap<Integer,String> map1 = new HashMap<>();
+        String val;
+        int key;
+        for (Map.Entry<Integer, String> pair : map.entrySet()){
+            val = pair.getValue();
+            key = pair.getKey();
+            if (map1.containsValue(val)){
+                continue;
+            }
+            else{
+                map1.put(key,val);
+            }
+        }
+        Iterator<Map.Entry<Integer, String>> iterator = map.entrySet().iterator();
+        while (iterator.hasNext())
+        {
+            Map.Entry<Integer, String> pair = iterator.next();
+            iterator.remove();
+        }
+
+        for (Map.Entry<Integer,String> pair: map1.entrySet()){
+            key = pair.getKey();
+            val = pair.getValue();
+            map.put(key,val);
+        }
+    }
+
+/*
+
+    HashMap <Integer, String> intersection (List<String> some1, List<String> some2) {
+
+        a.createBlock(some1);
+        b.createBlock(some2);
+
+        HashMap<Integer, String> result = new HashMap<>();
+
+        int sizeAll = sizeA + sizeB;
+
+        for (int i = 0; i < sizeAll; i++) {
+
+            for(int j = 0; j < sizeAll; j++) {
+
+                if (a.get(i) == b.get(j)){
+
+                    result.put();
+                }
+            }
+        }
 
         for (int key = 0; key < sizeA; key++) {
 
@@ -32,34 +99,13 @@ class bitSet {
             result.put(key, some2);
         }
 
+        removeTheFirstNameDuplicates(result);
+
         return result;
 
     }
 
-    HashMap intersection (String some1, String some2) {
-
-
-
-        a.createBlock(some1);
-        b.createBlock(some2);
-
-        HashMap<Integer, Object> result = new HashMap<>();
-
-        int sizeAll = sizeA + sizeB;
-
-        for (int count = 0; count > sizeAll; count ++) {
-
-
-
-        }
-
-
-
-
-
-    }
-
-
+*/
 
     /*void sum (HashMap<Integer, String> a, HashMap<Integer, String> b) {
 
@@ -71,10 +117,10 @@ class bitSet {
     void intersection (bitSet block1, bitSet block2) {
 
     }*/
-
+/*
 }
 
-class block extends HashMap {
+class block12 extends HashMap {
 
     public int size;
     public String name;
@@ -84,13 +130,13 @@ class block extends HashMap {
         this.size = size;
     }
 
-    HashMap<Integer, String> elem = new HashMap<>();
+    Map<Integer, String> elem = new HashMap<>();
 
-    HashMap<Integer, String> createBlock (String objects) {
+    Map<Integer, String> createBlock12 (List<String> objects) {
 
         for (int key = 0; key < size; key++) {
 
-            elem.put(key, objects);
+            elem.put(key, objects.get(key));
         }
 
         return elem;
@@ -98,3 +144,4 @@ class block extends HashMap {
     }
 
 }
+*/
