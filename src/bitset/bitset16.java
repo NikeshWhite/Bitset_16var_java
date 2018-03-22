@@ -4,43 +4,44 @@ import java.util.*;
 
 public class bitset16 {
 
-    private int size;
+    private static int size;
 
-    bitset16(int size) {
+    public bitset16(int size) {
         this.size = size;
     }
 
-    public static HashSet<String> union(HashMap<Integer, String> A, HashMap<Integer, String> B) {
+    public static HashSet<Integer> union(HashSet<Integer> A) {
 
-        HashSet<String> a = new HashSet<>(A.values());
-        HashSet<String> b = new HashSet<>(B.values());
+        HashSet<Integer> a = new HashSet<>();
+        for (int i = 0; i < size; i++) {
+            a.add(i);
+        }
 
-        HashSet<String> result = new HashSet<>(a);
-        result.addAll(b);
-        return result;
+        a.addAll(A);
+        return a;
     }
 
-    public static HashSet<String> intersection(HashMap<Integer, String> A, HashMap<Integer, String> B) {
+    public static HashSet<Integer> intersection(HashSet<Integer> A) {
 
-        HashSet<String> a = new HashSet<>(A.values());
-        HashSet<String> b = new HashSet<>(B.values());
-
-        HashSet<String> result = new HashSet<>(a);
-        result.retainAll(b);
-        return result;
+        HashSet<Integer> a = new HashSet<>();
+        for (int i = 0; i < size; i++) {
+            a.add(i);
+        }
+        a.retainAll(A);
+        return a;
     }
 
-    public static HashSet<String> complement(HashMap<Integer, String> A, HashMap<Integer, String> B) {
+    public static HashSet<Integer> complement(HashSet<Integer> A) {
 
-        HashSet<String> a = new HashSet<>(A.values());
-        HashSet<String> b = new HashSet<>(B.values());
-
-        HashSet<String> result = new HashSet<>(a);
-        result.removeAll(b);
-        return result;
+        HashSet<Integer> a = new HashSet<>();
+        for (int i = 0; i < size; i++) {
+            a.add(i);
+        }
+        a.removeAll(A);
+        return a;
     }
-
-    public static HashSet<String> add(HashMap<Integer, String> A, String[] element) {
+/*
+    public static HashSet<String> add(HashSet<Integer> A) {
 
         HashSet<String> a = new HashSet<>(A.values());
 
@@ -48,7 +49,6 @@ public class bitset16 {
 
         return a;
     }
-
     public static HashSet<String> remove(HashMap<Integer, String> A, String[] element) {
 
         HashSet<String> a = new HashSet<>(A.values());
@@ -65,25 +65,6 @@ public class bitset16 {
         return a.contains(element);
 
     }
+*/
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        bitset16 bitset16 = (bitset16) o;
-        return size == bitset16.size;
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(size);
-    }
-
-    @Override
-    public String toString() {
-        return "bitset16{" +
-                "size=" + size +
-                '}';
-    }
 }
