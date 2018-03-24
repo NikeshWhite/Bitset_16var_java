@@ -1,5 +1,6 @@
 package test;
 import bitset.bitset16;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.*;
@@ -8,88 +9,92 @@ import static org.junit.Assert.*;
 
 public class bitset16Test {
 
-    bitset16 x = new bitset16(5);
+    bitset16 z = new bitset16(5);
 
-    private static HashSet<Integer> objects1;
+    private static Set<String> objects1;
     static {
         objects1 = new HashSet<>();
-        objects1.add(3);
-        objects1.add(4);
-        objects1.add(88);
+        objects1.add("Object0");
+        objects1.add("Object1");
+        objects1.add("Object2");
+        objects1.add("Some");
+        objects1.add("Earth");
     }
 
-    private static HashSet<Integer> resultUnion;
+    private static Set<String> resultUnion;
     static {
         resultUnion = new HashSet<>();
-        resultUnion.add(0);
-        resultUnion.add(1);
-        resultUnion.add(2);
-        resultUnion.add(3);
-        resultUnion.add(4);
-        resultUnion.add(88);
+        resultUnion.add("Object0");
+        resultUnion.add("Object1");
+        resultUnion.add("Object2");
+        resultUnion.add("Object3");
+        resultUnion.add("Object4");
+        resultUnion.add("Some");
+        resultUnion.add("Earth");
     }
 
-    private static HashSet<Integer> resultIntersection;
+    private static Set<String> resultIntersection;
     static {
         resultIntersection = new HashSet<>();
-        resultIntersection.add(3);
-        resultIntersection.add(4);
-    }
+        resultIntersection.add("Object0");
+        resultIntersection.add("Object1");
+        resultIntersection.add("Object2");}
 
-    private static HashSet<Integer> resultComplement;
+    private static Set<String> resultComplement;
     static {
         resultComplement = new HashSet<>();
-        resultComplement.add(0);
-        resultComplement.add(1);
-        resultComplement.add(2);
+        resultComplement.add("Some");
+        resultComplement.add("Earth");
     }
     
-    private static HashSet<String> resultAdd;
+    private static Set<String> resultAdd;
     static {
         resultAdd = new HashSet<>();
-        resultAdd.add("Java");
-        resultAdd.add("Scala");
-        resultAdd.add("Groovy");
-        resultAdd.add("First");
-        resultAdd.add("Second");
-        resultAdd.add("Third");
+        resultAdd.add("Object0");
+        resultAdd.add("Object1");
+        resultAdd.add("Object2");
+        resultAdd.add("Object4");
+        resultAdd.add("Some");
+        resultAdd.add("Earth");
     }
 
-    private static HashSet<String> resultRemove;
+    private static Set<String> resultRemove;
     static {
         resultRemove = new HashSet<>();
-        resultRemove.add("Java");
-        resultRemove.add("Scala");
+        resultRemove.add("Object0");
+        resultRemove.add("Object1");
+        resultRemove.add("Some");
+        resultRemove.add("Earth");
     }
 
     @Test
     public void testUnion() {
-        assertEquals(new HashSet<>(resultUnion), bitset16.union(new HashSet<>(objects1)));
+        assertEquals(resultUnion, bitset16.union(objects1));
     }
 
     @Test
     public void testIntersection() {
-        assertEquals(new HashSet<>(resultIntersection), bitset16.intersection(new HashSet<>(objects1)));
+        assertEquals(resultIntersection, bitset16.intersection(objects1));
     }
 
     @Test
     public void testComplement() {
-        assertEquals(new HashSet<>(resultComplement), bitset16.complement(new HashSet<>(objects1)));
+        assertEquals(resultComplement, bitset16.complement(objects1));
     }
-/*
+
     @Test
     public void testAdd() {
-        assertEquals(new HashSet<>(resultAdd), bitset16.add(new HashMap<>(objects1), new String[]{"First", "Second", "Third"}));
+        assertEquals(resultAdd, bitset16.add(objects1, 4));
     }
 
     @Test
     public void testRemove() {
-        assertEquals(new HashSet<>(resultRemove), bitset16.remove(new HashMap<>(objects1), new String[]{"Groovy"}));
+        assertEquals(resultRemove, bitset16.remove(objects1, 2));
     }
 
     @Test
     public void testCheck() {
-        assertTrue(bitset16.check(objects1, "Java"));
-        assertFalse(bitset16.check(objects1, "First"));
+        assertTrue(bitset16.check(objects1, 2));
+        assertFalse(bitset16.check(objects1, 4));
     }
-*/}
+}
