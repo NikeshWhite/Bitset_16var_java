@@ -1,80 +1,101 @@
 package bitset;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 public class bitset16 {
 
-    private static int size;
-    private static ArrayList<String> a = new ArrayList<>(size);
+    private int size;
+    private Object[] elements;
 
     public bitset16(int size) {
         this.size = size;
+        this.elements = new Object[size];
+    }
 
-        for (int i = 0; i < size; i++) {
-            a.add(i, "Object" + i);
+    public int getSize() {
+        return size;
+    }
+
+    public void addElement (Object element) {
+        for (int i = 0; i < elements.length ; i++) {
+            if (elements[i] == null) {
+                elements[i] = element;
+                return;
+            }
         }
+        throw new IndexOutOfBoundsException("Нет места в массиве");
     }
 
-    public static Set<String> union(Set<String> other) {
+    public void deleteElement (Object element) {
+        for (int i = 0; i < elements.length ; i++) {
+            if (elements[i] == element) {
+                elements[i] = null;
+                return;
+            }
+        }
+        throw new IndexOutOfBoundsException("Заданный элемент в массиве отсутствует");
+    }
 
-        Set<String> result = new HashSet<>(other);
-        result.addAll(a);
+    public boolean checkElement (Object element) {
+        for (int i = 0; i < elements.length ; i++) {
+            if (elements[i] == element) return true;
+        }
+        return false;
+    }
+
+    public Set<Object> union (Object[] other) {
+
+        Set<Object> elementsSet = new HashSet<>(Arrays.asList(elements));
+
+        Set<Object> result = new HashSet<>(Arrays.asList(other));
+        result.addAll(elementsSet);
 
         return result;
     }
 
+    public Set<Object> intersection(Object[] other) {
 
-    public static Set<String> intersection(Set<String> other) {
+        Set<Object> elementsSet = new HashSet<>(Arrays.asList(elements));
 
-        Set<String> result = new HashSet<>(other);
-        result.retainAll(a);
-
-        return result;
-    }
-
-    public static Set<String> complement(Set<String> other) {
-
-        Set<String> result = new HashSet<>(other);
-        result.removeAll(a);
+        Set<Object> result = new HashSet<>(Arrays.asList(other));
+        result.retainAll(elementsSet);
 
         return result;
     }
 
-    public static Set<String> add(Set<String> other, int num) {
+    public Set<Object> complement(Object[] other) {
 
-        Set<String> result = new HashSet<>(other);
-        result.add(a.get(num));
+        Set<Object> elementsSet = new HashSet<>(Arrays.asList(elements));
 
-        return result;
-    }
-
-
-    public static Set<String> remove(Set<String> other, int num) {
-
-        Set<String> result = new HashSet<>(other);
-        result.remove(a.get(num));
+        Set<Object> result = new HashSet<>(Arrays.asList(other));
+        result.removeAll(elementsSet);
 
         return result;
     }
 
-    public static boolean check(Set<String> other, int num) {
-
-        return other.contains(a.get(num));
-
-    }
 
     @Override
     public String toString() {
-        return "bitset16{}";
-    }
-
-    @Override
-    public int hashCode() {
-        return super.hashCode();
+        return Arrays.toString(elements);
     }
 
     @Override
     public boolean equals(Object o) {
-        return super.equals(o);
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        bitset16 bitSet = (bitset16) o;
+        return size == bitSet.size &&
+                Arrays.equals(elements, bitSet.elements);
+    }
+
+    @Override
+    public int hashCode() {
+
+        int result = Objects.hash(size);
+        result = 31 * result + Arrays.hashCode(elements);
+        return result;
     }
 }
