@@ -4,6 +4,8 @@ import bitset.bitSet;
 import bitset.basicOperations;
 import org.junit.Test;
 
+import java.util.Arrays;
+
 import static org.junit.Assert.*;
 
 public class bitSetTest {
@@ -18,15 +20,29 @@ public class bitSetTest {
 
     @Test
     public void getElements() {
-       /* bitSet a = new bitSet(3);
+        bitSet a = new bitSet(3);
         a.addElement(0);
         a.addElement(1);
+        a.deleteElement(1);
         a.addElement(2);
 
         boolean[] result1 = new boolean[3];
+        result1[0] = true;
+        result1[1] = false;
+        result1[2] = true;
 
+        bitSet z = new bitSet(3);
+        z.addElement(2);
+        z.deleteElement(2);
+        z.addElement(2);
 
-        assertEquals(result1, a.getElements());*/
+        boolean[] result2 = new boolean[3];
+        result2[0] = false;
+        result2[1] = false;
+        result2[2] = true;
+
+        assertEquals(Arrays.toString(result1), Arrays.toString(a.getElements()));
+        assertEquals(Arrays.toString(result2), Arrays.toString(z.getElements()));
     }
 
     @Test
@@ -152,17 +168,21 @@ public class bitSetTest {
         bitSet a = new bitSet(8);
         bitSet b = new bitSet(6);
         bitSet result1 = new bitSet(8);
+        bitSet result2 = new bitSet(6);
 
         int[] array1 = {1, 2, 3, 7};
         int[] array2 = {3, 4, 5};
-        int[]arrayRresult1 = {1, 2, 7};
+        int[] arrayResult1 = {1, 2, 7};
+
 
         a.addArrayOfElements(array1);
         b.addArrayOfElements(array2);
-        result1.addArrayOfElements(arrayRresult1);
+        result1.addArrayOfElements(arrayResult1);
+        result2.addElement(4);
+        result2.addElement(5);
 
         assertEquals(result1, basicOperations.complement(a, b));
-
+        assertEquals(result2, basicOperations.complement(b, a));
     }
 
 }
