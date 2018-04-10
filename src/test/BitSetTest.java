@@ -1,26 +1,25 @@
 package test;
 
-import bitset.bitSet;
-import bitset.basicOperations;
+import bitset.BitSet;
 import org.junit.Test;
 
 import java.util.Arrays;
 
 import static org.junit.Assert.*;
 
-public class bitSetTest {
+public class BitSetTest {
 
     @Test
     public void getSize() {
-        bitSet a = new bitSet(3);
-        bitSet z = new bitSet(0);
+        BitSet a = new BitSet(3);
+        BitSet z = new BitSet(0);
         assertEquals(3, a.getSize());
         assertEquals(0, z.getSize());
     }
 
     @Test
     public void getElements() {
-        bitSet a = new bitSet(3);
+        BitSet a = new BitSet(3);
         a.addElement(0);
         a.addElement(1);
         a.deleteElement(1);
@@ -31,7 +30,7 @@ public class bitSetTest {
         result1[1] = false;
         result1[2] = true;
 
-        bitSet z = new bitSet(3);
+        BitSet z = new BitSet(3);
         z.addElement(2);
         z.deleteElement(2);
         z.addElement(2);
@@ -47,7 +46,7 @@ public class bitSetTest {
 
     @Test
     public void addElement() {
-        bitSet a = new bitSet(5);
+        BitSet a = new BitSet(5);
         a.addElement(0);
         a.addElement(4);
 
@@ -57,7 +56,7 @@ public class bitSetTest {
 
     @Test
     public void addArrayOfElements() {
-        bitSet a = new bitSet(5);
+        BitSet a = new BitSet(5);
         int[] array1 = {1, 3, 4};
         a.addArrayOfElements(array1);
 
@@ -68,7 +67,7 @@ public class bitSetTest {
 
     @Test
     public void deleteElement() {
-        bitSet a = new bitSet(5);
+        BitSet a = new BitSet(5);
         a.addElement(4);
         a.addElement(1);
         a.deleteElement(1);
@@ -81,7 +80,7 @@ public class bitSetTest {
 
     @Test
     public void deleteArrayOfElements() {
-        bitSet a = new bitSet(5);;
+        BitSet a = new BitSet(5);;
         int[] array1 = {0, 1, 2, 3};
         int[] array2 = {0, 1};
         int[] array3 = {3, 4};
@@ -97,7 +96,7 @@ public class bitSetTest {
 
     @Test
     public void checkElement() {
-        bitSet a = new bitSet(5);
+        BitSet a = new BitSet(5);
         a.addElement(1);
         a.addElement(2);
         a.addElement(3);
@@ -108,13 +107,13 @@ public class bitSetTest {
 
     @Test
     public void union() {
-        bitSet a = new bitSet(5);
-        bitSet b = new bitSet(22);
-        bitSet x = new bitSet(2);
-        bitSet z = new bitSet(7);
-        bitSet result1 = new bitSet(7);
-        bitSet result2 = new bitSet(7);
-        bitSet result3 = new bitSet(22);
+        BitSet a = new BitSet(5);
+        BitSet b = new BitSet(22);
+        BitSet x = new BitSet(2);
+        BitSet z = new BitSet(7);
+        BitSet result1 = new BitSet(7);
+        BitSet result2 = new BitSet(7);
+        BitSet result3 = new BitSet(22);
 
         int[] array1 = {1, 2, 3};
         int[] array2 = {3, 4, 5, 6};
@@ -130,21 +129,21 @@ public class bitSetTest {
         result2.addArrayOfElements(arrayResult2);
         result3.addArrayOfElements(arrayResult3);
 
-        assertEquals(result1, basicOperations.union(a, z));
-        assertEquals(result2, basicOperations.union(x, z));
-        assertEquals(result3, basicOperations.union(b, a));
+        assertEquals(result1, BitSet.union(a, z));
+        assertEquals(result2, BitSet.union(x, z));
+        assertEquals(result3, BitSet.union(b, a));
     }
 
     @Test
     public void intersection() {
 
-        bitSet a = new bitSet(1);
-        bitSet b = new bitSet(5);
-        bitSet x = new bitSet(8);
-        bitSet z = new bitSet(22);
-        bitSet result1 = new bitSet(1);
-        bitSet result2 = new bitSet(5);
-        bitSet result3 = new bitSet(8);
+        BitSet a = new BitSet(1);
+        BitSet b = new BitSet(5);
+        BitSet x = new BitSet(8);
+        BitSet z = new BitSet(22);
+        BitSet result1 = new BitSet(1);
+        BitSet result2 = new BitSet(5);
+        BitSet result3 = new BitSet(8);
 
         int[] array1 = {1, 2, 3, 4};
         int[] array2 = {3, 4, 7};
@@ -156,19 +155,19 @@ public class bitSetTest {
         z.addElement(21);
         result2.addArrayOfElements(arrayResult2);
 
-        assertEquals(result1, basicOperations.intersection(a, b));
-        assertEquals(result2, basicOperations.intersection(b, x));
-        assertEquals(result2, basicOperations.intersection(x, b));
-        assertEquals(result3, basicOperations.intersection(x, z));
+        assertEquals(result1, BitSet.intersection(a, b));
+        assertEquals(result2, BitSet.intersection(b, x));
+        assertEquals(result2, BitSet.intersection(x, b));
+        assertEquals(result3, BitSet.intersection(x, z));
     }
 
     @Test
     public void complement() {
 
-        bitSet a = new bitSet(8);
-        bitSet b = new bitSet(6);
-        bitSet result1 = new bitSet(8);
-        bitSet result2 = new bitSet(6);
+        BitSet a = new BitSet(8);
+        BitSet b = new BitSet(6);
+        BitSet result1 = new BitSet(8);
+        BitSet result2 = new BitSet(6);
 
         int[] array1 = {1, 2, 3, 7};
         int[] array2 = {3, 4, 5};
@@ -181,8 +180,8 @@ public class bitSetTest {
         result2.addElement(4);
         result2.addElement(5);
 
-        assertEquals(result1, basicOperations.complement(a, b));
-        assertEquals(result2, basicOperations.complement(b, a));
+        assertEquals(result1, BitSet.complement(a, b));
+        assertEquals(result2, BitSet.complement(b, a));
     }
 
 }
