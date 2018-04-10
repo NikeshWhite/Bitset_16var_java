@@ -19,27 +19,40 @@ public class BitSet {
     }
 
     public void addElement (int element) {
-       elements[element] = true;
+        if (element <= getSize()) {
+            elements[element] = true;
+        } else {
+            throw new IllegalArgumentException("Element exceeds the maximum value");
+        }
     }
 
     public void addArrayOfElements (int[] element) {
         for (int i = 0; i < element.length; i++) {
-            elements[element[i]] = true;
+            addElement(element[i]);
         }
     }
 
     public void deleteElement (int element) {
-        elements[element] = false;
+        if (element <= getSize()) {
+            elements[element] = false;
+        } else {
+            throw new IllegalArgumentException("Element exceeds the maximum value");
+        }
     }
 
     public void deleteArrayOfElements (int[] element) {
         for (int i = 0; i < element.length; i++) {
-            elements[element[i]] = false;
+            deleteElement(element[i]);
         }
     }
 
     public boolean checkElement (int element) {
-        return elements[element];
+        if (element <= getSize()) {
+            return elements[element];
+        } else {
+            throw new IllegalArgumentException("Element exceeds the maximum value");
+        }
+
     }
 
     public static BitSet union(BitSet firstArray, BitSet secondArray) {

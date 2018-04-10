@@ -101,8 +101,8 @@ public class BitSetTest {
         a.addElement(2);
         a.addElement(3);
 
-        assertEquals(true, a.checkElement(1));
-        assertEquals(false, a.checkElement(4));
+        assertTrue(a.checkElement(1));
+        assertFalse(a.checkElement(4));
     }
 
     @Test
