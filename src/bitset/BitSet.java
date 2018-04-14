@@ -19,10 +19,10 @@ public class BitSet {
     }
 
     public void addElement (int element) {
-        if (element <= getSize()) {
+        if (element <= getSize() && element >= 0) {
             elements[element] = true;
         } else {
-            throw new IllegalArgumentException("The element exceeds the maximum value");
+            throw new IllegalArgumentException("The element exceeds the value");
         }
     }
 
@@ -33,10 +33,10 @@ public class BitSet {
     }
 
     public void deleteElement (int element) {
-        if (element <= getSize()) {
+        if (element <= getSize() && element >= 0) {
             elements[element] = false;
         } else {
-            throw new IllegalArgumentException("The element exceeds the maximum value");
+            throw new IllegalArgumentException("The element exceeds the value");
         }
     }
 
